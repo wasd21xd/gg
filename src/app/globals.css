@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --black: #0a0a0a;
+  --white: #f5f4f0;
+  --gray-100: #e8e6e0;
+  --gray-300: #b0ada5;
+  --gray-500: #6b6860;
+  --gray-700: #302e2b;
+  --font-serif: var(--font-playfair, 'Georgia', serif);
+  --font-sans: var(--font-manrope, 'sans-serif');
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+}
+
+.font-serif { font-family: var(--font-serif) !important; }
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Scroll indicator */
+@keyframes scrollLine {
+  0%, 100% { height: 48px; opacity: 1; }
+  50% { height: 24px; opacity: 0.5; }
+}
+.animate-scroll-line {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+/* Float bg */
+@keyframes floatBg {
+  from { transform: translate(-50%, -50%) translateX(-20px); }
+  to { transform: translate(-50%, -50%) translateX(20px); }
+}
+.animate-float-bg {
+  animation: floatBg 8s ease-in-out infinite alternate;
+}
+
+/* FAQ accordion */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s;
+}
+.faq-answer.open {
+  max-height: 300px;
+  padding-bottom: 28px;
+}
