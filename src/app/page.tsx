@@ -366,40 +366,134 @@ export default function HomePage() {
       </section>
 
       {/* ── FOUNDERS ── */}
-      <section id="founders" aria-labelledby="founders-title" className="py-[120px] px-6 md:px-[60px] bg-[#f5f4f0]">
-        <p className="text-[11px] tracking-[0.2em] uppercase text-[#6b6860] mb-4 flex items-center gap-3 before:content-[''] before:w-6 before:h-px before:bg-[#b0ada5]">Основатели</p>
-        <RevealWrapper>
-          <h2 id="founders-title" className="font-serif font-bold leading-[1.05] tracking-[-0.02em] mb-[72px]" style={{ fontSize: "clamp(36px,4vw,64px)" }}>
-            Люди за<br />компанией.
-          </h2>
+<section
+  id="founders"
+  aria-labelledby="founders-title"
+  className="py-[120px] px-6 md:px-[60px] bg-[#f5f4f0]"
+>
+  <p className="text-[11px] tracking-[0.2em] uppercase text-[#6b6860] mb-4 flex items-center gap-3 before:content-[''] before:w-6 before:h-px before:bg-[#b0ada5]">
+    Основатели
+  </p>
+
+  <RevealWrapper>
+    <h2
+      id="founders-title"
+      className="font-serif font-bold leading-[1.05] tracking-[-0.02em] mb-[72px]"
+      style={{ fontSize: "clamp(36px,4vw,64px)" }}
+    >
+      Люди за<br />компанией.
+    </h2>
+  </RevealWrapper>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    {/* Founder cards */}
+    {[
+      {
+        img: "/IMGR8597.jpg",
+        alt: "Михаил Лбов",
+        name: "Михаил Лбов",
+        roleShort: "CEO · Основатель",
+        roleEn: "Chief Executive Officer",
+        bio: "Совместно с командой продали 4800 квартир в новостройках. Рассрочки, все виды ипотек (семейная, военная, АйТи), субсидии, материнский капитал.",
+      },
+      {
+        img: "/IMGR8291.jpg",
+        alt: "Олеся Лбова",
+        name: "Олеся Лбова",
+        roleShort: "COO · Основатель",
+        roleEn: "Chief Operating Officer",
+        bio: "Агент по вторичной недвижимости с опытом более 20 лет. Продала более 450 квартир, опыт расселения коммуналок и сделок с жилищными сертификатами.",
+      },
+    ].map((f) => {
+      const [first, second] = f.name.split(" ");
+
+      return (
+        <RevealWrapper key={f.name}>
+          <article
+  className="group relative overflow-hidden cursor-pointer"
+  style={{ aspectRatio: "3/4" }}
+>
+  {/* IMAGE */}
+  <img
+    src={f.img}
+    alt={f.alt}
+    className="w-full h-full object-cover object-top transition-all duration-700 group-hover:brightness-[0.2] group-hover:scale-[1.03]"
+  />
+
+  {/* ── DEFAULT INFO (visible always, fades out on hover) ── */}
+  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 group-hover:opacity-0">
+    <p className="font-serif text-[20px] text-white mb-1">
+      {f.name}
+    </p>
+    <p className="text-[10px] tracking-[0.2em] uppercase text-white/55">
+      {f.roleShort}
+    </p>
+  </div>
+
+  {/* ── HOVER INFO ── */}
+  <div className="absolute inset-0 flex flex-col justify-center p-8 opacity-0 transition-all duration-500 group-hover:opacity-100">
+    
+    <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 mb-3">
+      Основатель
+    </p>
+
+    <p className="font-serif text-[30px] font-light text-white leading-[1.1] mb-2">
+      {f.name.split(" ")[0]}
+      <br />
+      {f.name.split(" ")[1] || ""}
+    </p>
+
+    <p className="text-[10px] tracking-[0.18em] uppercase text-white/50 mb-5">
+      {f.roleEn}
+    </p>
+
+    {/* animated line on hover */}
+    <div className="h-px bg-white/30 mb-5 w-[28px] group-hover:w-[48px] transition-all duration-500" />
+
+    <p className="text-[12px] font-light text-white/75 leading-[1.75]">
+      {f.bio}
+    </p>
+  </div>
+</article>
         </RevealWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[{ role: "Основатели", quote: "Мы создали эту компанию, чтобы помочь большому количеству людей найти место, которое они будут называть домом." },
-            { role: "Наша команда — 15 экспертов для вас", quote: "Каждый специалист нашей команды — эксперт своего направления. Вместе мы закрыли более 1500 сделок и продолжаем расти." }].map((f, i) => (
-            <RevealWrapper key={i}>
-              <article className="border border-[#e8e6e0] p-8">
-                <div className="w-full aspect-square bg-[#e8e6e0] flex items-center justify-center text-[#b0ada5] text-sm mb-6">Фото</div>
-                <p className="text-[12px] text-[#6b6860] tracking-[0.08em] uppercase mb-6">{f.role}</p>
-                <p className="text-[15px] text-[#6b6860] leading-[1.8] italic">&ldquo;{f.quote}&rdquo;</p>
-              </article>
-            </RevealWrapper>
-          ))}
-          <RevealWrapper>
-            <div className="bg-[#0a0a0a] text-white p-8 flex flex-col justify-between">
-              <div>
-                <div className="font-serif text-6xl font-bold text-white/10 mb-4" aria-hidden="true">7</div>
-                <h3 className="font-serif text-xl font-bold mb-4">История, которая началась с собственной покупки</h3>
-                <p className="text-[14px] text-[#b0ada5] leading-[1.8]">
-                  Несколько лет мы сами шли к своей квартире. Было страшно, волнительно и непонятно. Но когда попали в правильные руки — мечта стала реальностью. Теперь мы собрали целую команду, которая за вас отфильтрует весь рынок, выберет лучшие предложения и проведёт по всем этапам покупки. И, конечно, это бесплатно.
-                </p>
-              </div>
-              <a href="#cta" className="mt-8 inline-block border border-white/30 text-white px-6 py-3 text-[13px] tracking-[0.06em] uppercase hover:border-white transition-colors text-center">
-                Начать поиск
-              </a>
-            </div>
-          </RevealWrapper>
+      );
+    })}
+
+    {/* Info card */}
+    <RevealWrapper>
+      <div
+        className="bg-[#0a0a0a] text-white p-8 flex flex-col justify-between"
+        style={{ aspectRatio: "3/4" }}
+      >
+        <div>
+          <div className="font-serif text-6xl font-bold text-white/[0.08] mb-4">
+            7
+          </div>
+
+          <h3 className="font-serif text-xl font-bold mb-4">
+            История, которая началась с собственной покупки
+          </h3>
+
+          <p className="text-[14px] text-[#b0ada5] leading-[1.8]">
+            Несколько лет мы сами шли к своей квартире. Было страшно,
+            волнительно и непонятно. Но когда попали в правильные руки —
+            мечта стала реальностью. Теперь мы собрали команду, которая
+            за вас отфильтрует весь рынок.
+          </p>
         </div>
-      </section>
+
+        <a
+          href="#cta"
+          className="mt-8 inline-block border border-white/30 text-white px-6 py-3 text-[11px] tracking-[0.08em] uppercase hover:border-white transition-colors text-center"
+        >
+          Начать поиск
+        </a>
+      </div>
+    </RevealWrapper>
+
+  </div>
+</section>
 
       {/* ── REVIEWS ── */}
       <section id="reviews" aria-labelledby="reviews-title" className="py-[120px] px-6 md:px-[60px] bg-[#0a0a0a] text-white">
@@ -462,10 +556,20 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center mt-16 text-[#6b6860]">
             <a href="tel:+78124256565" className="text-[15px] text-[#b0ada5] hover:text-white transition-colors no-underline">
-              📞 +7 (812) 425-65-65
+              📞 +7 (905) 278-82-84
             </a>
-            <a href="https://wa.me/78124256565" className="text-[15px] text-[#b0ada5] hover:text-white transition-colors no-underline" target="_blank" rel="noopener noreferrer">
-              💬 WhatsApp
+            <a
+
+  href="https://t.me/gorizont_novostroyki"
+
+  className="text-[15px] text-[#b0ada5] hover:text-white transition-colors no-underline"
+
+  target="_blank"
+
+  rel="noopener noreferrer"
+
+>
+              💬 Telegram
             </a>
             <span className="text-[15px]">📍 Санкт-Петербург</span>
           </div>
