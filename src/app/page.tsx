@@ -2,6 +2,7 @@ import Nav from "./components/Nav";
 import RevealWrapper from "./components/RevealWrapper";
 import FaqItem from "./components/FaqItem";
 import CTAForm from "./components/CTAForm";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -131,10 +132,10 @@ const steps = [
 ];
 
 const advantages = [
-  { icon: "🛡️", title: "Безопасность", text: "Работаем только с проверенными застройщиками. Все объекты — с надлежащей документацией." },
-  { icon: "⚡", title: "Скорость", text: "Первая подборка в день обращения. Ипотека одобряется за 1–2 дня с минимальным пакетом документов." },
-  { icon: "🏆", title: "Экспертиза", text: "7 лет на рынке СПб. Знаем репутацию каждого застройщика, особенности районов и реальные темпы строительства." },
-  { icon: "🤝", title: "Честность", text: "Скажем, если объект не стоит своих денег. Ваш результат — наша репутация. Мы работаем на рекомендациях." },
+  { icon: "", title: "Безопасность", text: "Работаем только с проверенными застройщиками. Все объекты — с надлежащей документацией." },
+  { icon: "", title: "Скорость", text: "Первая подборка в день обращения. Ипотека одобряется за 1–2 дня с минимальным пакетом документов." },
+  { icon: "", title: "Экспертиза", text: "7 лет на рынке СПб. Знаем репутацию каждого застройщика, особенности районов и реальные темпы строительства." },
+  { icon: "", title: "Честность", text: "Скажем, если объект не стоит своих денег. Ваш результат — наша репутация. Мы работаем на рекомендациях." },
 ];
 
 const reviews = [
@@ -229,10 +230,17 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[80px] mt-[72px] items-start">
           <RevealWrapper>
             <div className="relative">
-              <div className="w-full aspect-[3/4] bg-[#302e2b] flex items-center justify-center text-white/20 text-sm">
-                {/* Фото команды */}
-                <span className="text-[#6b6860] text-sm">Фото команды</span>
-              </div>
+             <div className="relative w-full aspect-[3/4] overflow-hidden">
+
+  <Image
+  src="/comand1.jpg"
+  alt="Команда Горизонт"
+  fill
+  className="object-contain"
+  priority
+/>
+
+</div>
               <div className="absolute bottom-0 left-0 right-0 bg-[#0a0a0a] text-white p-5 md:p-6">
                 <h3 className="font-serif text-lg mb-1">Горизонт — это люди</h3>
                 <p className="text-[12px] text-[#b0ada5] tracking-[0.08em] uppercase">Команда экспертов рынка недвижимости</p>
