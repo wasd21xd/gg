@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,10 +30,13 @@ export default function Nav() {
       }`}
     >
       <Link href="#hero" aria-label="Горизонт — на главную" className="flex items-center gap-3 no-underline">
-        <svg className="w-11 h-11" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="80" height="80" fill={scrolled ? "#0a0a0a" : "white"} />
-          <text x="40" y="52" textAnchor="middle" fontFamily="Georgia,serif" fontSize="28" fontWeight="bold" fill={scrolled ? "white" : "#0a0a0a"}>Г</text>
-        </svg>
+       <Image
+          src="/gorizont.svg"
+          alt="logo"
+          width={110}
+          height={110}
+          className={`transition-filter duration-300 ${scrolled ? "filter-none" : "filter brightness-0 invert"}`}
+        />
         <span className="flex flex-col">
           <span className={`font-serif text-xl font-bold tracking-widest ${scrolled ? "text-[#0a0a0a]" : "text-white"}`}>ГОРИЗОНТ</span>
           <span className={`text-[10px] tracking-[0.15em] uppercase mt-[-4px] ${scrolled ? "text-[#6b6860]" : "text-white/50"}`}>Центр недвижимости</span>
